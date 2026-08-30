@@ -1,0 +1,2253 @@
+<!DOCTYPE html>
+
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Itim&family=Kodchasan:wght@400;500;600;700&family=Noto+Sans+Thai:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<title>แบบสอบถามการวิจัยเอชพีวี | KKU</title>
+
+<style>
+:root{
+  --pink:#ff4fa3;
+  --pink2:#ff8bc2;
+  --blue:#35b9ff;
+  --blue2:#7ce3ff;
+  --ink:#172033;
+  --muted:#687386;
+  --bg:#f6f9ff;
+  --white:#fff;
+  --line:#e7ebf3;
+}
+
+*{
+  box-sizing:border-box
+}
+
+body{
+  margin:0;
+  font-family:"Kodchasan","Noto Sans Thai",sans-serif;
+  color:var(--ink);
+  background:linear-gradient(135deg,#fff5fb 0%,#f5fbff 50%,#f3f8ff 100%);
+  min-height:100vh;
+}
+
+body:before,
+body:after{
+  content:"";
+  position:fixed;
+  border-radius:50%;
+  filter:blur(80px);
+  opacity:.22;
+  z-index:-1;
+}
+
+body:before{
+  width:340px;
+  height:340px;
+  background:#ff4fa3;
+  top:-120px;
+  left:-80px;
+}
+
+body:after{
+  width:380px;
+  height:380px;
+  background:#35b9ff;
+  right:-120px;
+  bottom:-140px;
+}
+
+.hidden{
+  display:none!important
+}
+
+.container{
+  max-width:1180px;
+  margin:auto;
+  padding:28px 18px 70px;
+}
+
+.topbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:18px;
+  gap:15px;
+}
+
+.brand{
+  font-family:"Itim","Kodchasan",sans-serif;
+  font-size:25px;
+}
+
+.tabs{
+  display:flex;
+  gap:8px;
+  margin:20px 0;
+}
+
+.tab{
+  padding:10px 16px;
+  border-radius:12px;
+  border:0;
+  background:#edf3fb;
+  cursor:pointer;
+  font:inherit;
+  font-weight:700;
+}
+
+.tab.active{
+  background:linear-gradient(135deg,var(--pink),var(--blue));
+  color:#fff;
+}
+
+.hero{
+  padding:42px 36px;
+  border-radius:30px;
+  background:linear-gradient(135deg,#ff4fa3,#ff78b9 45%,#35b9ff);
+  color:#fff;
+  box-shadow:0 24px 70px rgba(75,112,180,.20);
+}
+
+.badge{
+  display:inline-block;
+  background:rgba(255,255,255,.18);
+  border:1px solid rgba(255,255,255,.35);
+  padding:7px 13px;
+  border-radius:999px;
+  font-size:13px;
+}
+
+.hero h1{
+  font-family:"Itim","Kodchasan",sans-serif;
+  font-size:clamp(28px,4vw,44px);
+  font-weight:400;
+  margin:14px 0 10px;
+}
+
+.hero p{
+  margin:0;
+  opacity:.92;
+}
+
+.card{
+  background:rgba(255,255,255,.94);
+  border:1px solid rgba(255,255,255,.9);
+  box-shadow:0 12px 45px rgba(39,75,130,.09);
+  border-radius:24px;
+  padding:28px;
+  margin-top:22px;
+}
+
+.section-title{
+  display:flex;
+  gap:14px;
+  margin-bottom:20px;
+}
+
+.section-no{
+  min-width:43px;
+  height:43px;
+  border-radius:14px;
+  display:grid;
+  place-items:center;
+  background:linear-gradient(135deg,var(--pink),var(--blue));
+  color:#fff;
+  font-weight:800;
+}
+
+.section-title h2{
+  margin:0;
+  font-family:"Itim","Kodchasan",sans-serif;
+  font-weight:400;
+  font-size:25px;
+}
+
+.section-title p{
+  margin:5px 0 0;
+  color:var(--muted);
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:16px;
+}
+
+.field{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+
+.field.full{
+  grid-column:1/-1;
+}
+
+label,
+.q-title{
+  font-weight:700;
+}
+
+input[type=text],
+input[type=number],
+input[type=password]{
+  width:100%;
+  border:1.5px solid var(--line);
+  border-radius:14px;
+  padding:13px 14px;
+  font:inherit;
+  outline:none;
+}
+
+input:focus{
+  border-color:var(--blue);
+  box-shadow:0 0 0 4px rgba(53,185,255,.12);
+}
+
+.options{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+}
+
+.option{
+  border:1.5px solid var(--line);
+  padding:10px 14px;
+  border-radius:14px;
+  cursor:pointer;
+  background:#fff;
+}
+
+.option:hover{
+  border-color:var(--pink);
+}
+
+.option input{
+  accent-color:var(--pink);
+}
+
+.question{
+  padding:18px 0;
+  border-bottom:1px solid var(--line);
+}
+
+.likert{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:8px;
+  margin-top:12px;
+}
+
+.likert label{
+  text-align:center;
+  border:1px solid var(--line);
+  border-radius:12px;
+  padding:9px 5px;
+  cursor:pointer;
+}
+
+.likert input{
+  display:block;
+  margin:auto auto 6px;
+  accent-color:var(--blue);
+}
+
+.tf{
+  display:flex;
+  gap:10px;
+  margin-top:10px;
+}
+
+.tf label{
+  padding:9px 20px;
+  border:1px solid var(--line);
+  border-radius:12px;
+}
+
+.progress-wrap{
+  position:sticky;
+  top:0;
+  z-index:10;
+  background:rgba(246,249,255,.88);
+  backdrop-filter:blur(12px);
+  padding:10px 0;
+}
+
+.progress{
+  height:9px;
+  border-radius:99px;
+  background:#e9edf5;
+  overflow:hidden;
+}
+
+.progress div{
+  height:100%;
+  width:0;
+  background:linear-gradient(90deg,var(--pink),var(--blue));
+  transition:.3s;
+}
+
+.progress-text{
+  font-size:13px;
+  color:var(--muted);
+  margin-top:6px;
+}
+
+.actions{
+  display:flex;
+  justify-content:flex-end;
+  gap:12px;
+  margin-top:26px;
+}
+
+.btn{
+  border:0;
+  border-radius:14px;
+  padding:13px 20px;
+  font:inherit;
+  font-weight:800;
+  cursor:pointer;
+}
+
+.btn.primary{
+  color:#fff;
+  background:linear-gradient(135deg,var(--pink),var(--blue));
+}
+
+.btn.secondary{
+  background:#eef5ff;
+  color:#2678b4;
+}
+
+.login-wrap{
+  max-width:430px;
+  margin:8vh auto;
+}
+
+.login-logo{
+  width:74px;
+  height:74px;
+  border-radius:24px;
+  background:linear-gradient(135deg,var(--pink),var(--blue));
+  display:grid;
+  place-items:center;
+  color:#fff;
+  font-size:30px;
+  margin:-64px auto 18px;
+}
+
+.error{
+  color:#d93869;
+  font-size:13px;
+  min-height:20px;
+  margin-top:8px;
+}
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:14px;
+}
+
+.stat{
+  padding:18px;
+  border-radius:18px;
+  background:#fff;
+  border:1px solid var(--line);
+}
+
+.stat b{
+  display:block;
+  font-size:27px;
+}
+
+.stat span{
+  font-size:13px;
+  color:var(--muted);
+}
+
+.table-wrap{
+  overflow:auto;
+}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+  font-size:13px;
+}
+
+th,
+td{
+  padding:11px;
+  border-bottom:1px solid var(--line);
+  text-align:left;
+  white-space:nowrap;
+}
+
+th{
+  background:#f7f9fc;
+}
+
+.empty{
+  text-align:center;
+  padding:50px;
+  color:var(--muted);
+}
+
+.toast{
+  position:fixed;
+  right:22px;
+  bottom:22px;
+  background:#172033;
+  color:#fff;
+  padding:14px 18px;
+  border-radius:14px;
+  display:none;
+  z-index:50;
+}
+
+@media(max-width:760px){
+
+  .grid,
+  .stats{
+    grid-template-columns:1fr;
+  }
+
+  .hero{
+    padding:30px 22px;
+  }
+
+  .card{
+    padding:20px;
+  }
+
+  .actions{
+    flex-direction:column;
+  }
+
+  .btn{
+    width:100%;
+  }
+
+  .likert{
+    grid-template-columns:1fr;
+  }
+
+}
+</style>
+
+</head>
+
+<body>
+
+<div id="toast" class="toast"></div>
+
+<!-- ADMIN LOGIN -->
+
+<div id="loginView" class="login-wrap hidden">
+
+  <div class="card">
+
+    <div class="login-logo">⌁</div>
+
+    <h1 style="text-align:center;margin:0">
+      Research Admin
+    </h1>
+
+    <p style="text-align:center;color:#687386">
+      เข้าสู่ระบบเพื่อดูข้อมูลแบบสอบถาม
+    </p>
+
+    <form id="loginForm">
+
+      <div class="field">
+        <label>Username</label>
+        <input id="username" required placeholder="admin">
+      </div>
+
+      <div class="field" style="margin-top:14px">
+        <label>Password</label>
+        <input id="password" type="password" required placeholder="••••">
+      </div>
+
+      <div id="loginError" class="error"></div>
+
+      <button class="btn primary" style="width:100%;margin-top:8px">
+        เข้าสู่ระบบ
+      </button>
+
+    </form>
+
+    <button
+      class="btn secondary"
+      style="width:100%;margin-top:10px"
+      type="button"
+      onclick="openApp('survey')">
+
+      กลับไปทำแบบสอบถาม
+
+    </button>
+
+  </div>
+
+</div>
+
+
+<!-- APP -->
+
+<div id="appView">
+
+<div class="container">
+
+<div class="topbar">
+
+  <div class="brand">
+    🎀 แบบสอบถามวิจัยเอชพีวี
+  </div>
+
+  <button
+    id="authButton"
+    class="btn secondary"
+    onclick="handleAuthButton()">
+
+    เข้าสู่ระบบผู้วิจัย
+
+  </button>
+
+</div>
+
+
+<div class="tabs">
+
+<button
+id="tabSurvey"
+class="tab active"
+onclick="showPage('survey')">
+
+แบบสอบถาม
+
+</button>
+
+<button
+id="tabDashboard"
+class="tab"
+onclick="showPage('dashboard')">
+
+ข้อมูลผู้ตอบ (ผู้วิจัย)
+
+</button>
+
+</div>
+
+
+<!-- SURVEY -->
+
+<div id="surveyPage">
+
+<section class="hero">
+
+<span class="badge">
+แบบสอบถามเพื่อการวิจัย
+</span>
+
+<h1>
+ความสัมพันธ์ระหว่างความรอบรู้ด้านสุขภาพกับการฉีดวัคซีนป้องกันการติดเชื้อเอชพีวี
+</h1>
+
+<p>
+สำหรับนักศึกษาระดับปริญญาตรี มหาวิทยาลัยขอนแก่น
+</p>
+
+</section>
+
+
+<div class="progress-wrap">
+
+<div class="progress">
+<div id="progressBar"></div>
+</div>
+
+<div id="progressText" class="progress-text">
+กรอกแบบสอบถามเพื่อบันทึกข้อมูล
+</div>
+
+</div>
+
+
+<form id="surveyForm">
+
+
+<!-- PERSONAL -->
+
+<section class="card">
+
+<div class="section-title">
+
+<div class="section-no">
+1
+</div>
+
+<div>
+
+<h2>
+ข้อมูลส่วนบุคคล
+</h2>
+
+<p>
+กรอกข้อมูลตามความเป็นจริงของท่าน
+</p>
+
+</div>
+
+</div>
+
+
+<div class="grid">
+
+<div class="field">
+<label>1. อายุ (ปี)</label>
+<input type="number" min="1" name="age" required>
+</div>
+
+<div class="field">
+<label>2. ชั้นปีที่กำลังศึกษา</label>
+<input type="text" name="level" required>
+</div>
+
+<div class="field">
+<label>3. คณะที่กำลังศึกษา</label>
+<input type="text" name="faculty" required>
+</div>
+
+<div class="field">
+<label>4. เกรดเฉลี่ยสะสม (GPAX)</label>
+<input type="number" min="0" max="4" step="0.01" name="gpax" required>
+</div>
+
+<div class="field">
+<label>5. รายได้ที่ได้รับต่อเดือน (บาท)</label>
+<input type="number" min="0" name="income" required>
+</div>
+
+<div class="field full">
+
+<label>
+6. มีคนในครอบครัวหรือเพื่อนสนิทที่เคยฉีดวัคซีนป้องกันการติดเชื้อเอชพีวีหรือไม่
+</label>
+
+<div class="options">
+
+<label class="option">
+<input type="radio" name="famvac" value="ไม่มี" required>
+ไม่มี
+</label>
+
+<label class="option">
+<input type="radio" name="famvac" value="มี">
+มี
+</label>
+
+</div>
+
+<input
+type="text"
+name="famvac_relation"
+placeholder="หากมี โปรดระบุ">
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- HEALTH LITERACY -->
+
+<section class="card">
+
+<div class="section-title">
+
+<div class="section-no">
+2
+</div>
+
+<div>
+
+<h2>
+ความรอบรู้ด้านสุขภาพ
+</h2>
+
+<p>
+เลือกคำตอบตามระดับความสามารถของท่าน
+</p>
+
+</div>
+
+</div>
+
+
+<div class="options" style="margin-bottom:15px">
+
+<label class="option">5 = ทำได้ง่ายมาก</label>
+<label class="option">4 = ทำได้ง่าย</label>
+<label class="option">3 = ทำได้ยาก</label>
+<label class="option">2 = ทำได้ยากมาก</label>
+<label class="option">1 = ไม่เคยทำ</label>
+
+</div>
+
+<div id="healthQuestions"></div>
+
+</section>
+
+
+<!-- KNOWLEDGE -->
+
+<section class="card">
+
+<div class="section-title">
+
+<div class="section-no">
+3
+</div>
+
+<div>
+
+<h2>
+ความรู้เกี่ยวกับเชื้อเอชพีวีและวัคซีน
+</h2>
+
+<p>
+เลือก ถูก หรือ ผิด
+</p>
+
+</div>
+
+</div>
+
+<div id="knowledgeQuestions"></div>
+
+</section>
+
+
+<!-- VACCINE -->
+
+<section class="card">
+
+<div class="section-title">
+
+<div class="section-no">4</div>
+
+<div>
+<h2>
+ข้อมูลการรับวัคซีนป้องกันการติดเชื้อเอชพีวี
+</h2>
+</div>
+
+</div>
+
+
+<div class="field">
+
+<label>
+1. ท่านเคยได้รับวัคซีนป้องกันการติดเชื้อเอชพีวีหรือไม่
+</label>
+
+<div class="options">
+
+<label class="option">
+<input
+type="radio"
+name="hpv_status"
+value="เคย"
+required
+onchange="toggleVaccine()">
+เคย
+</label>
+
+<label class="option">
+<input
+type="radio"
+name="hpv_status"
+value="ไม่เคย"
+onchange="toggleVaccine()">
+ไม่เคย
+</label>
+
+</div>
+
+</div>
+
+
+<div id="vaccinatedBox" class="hidden">
+
+<div class="question">
+
+<div class="q-title">
+2. หากเคย ท่านได้รับกี่เข็ม
+</div>
+
+<div class="options">
+
+<label class="option">
+<input type="radio" name="hpv_dose" value="1 เข็ม">
+1 เข็ม
+</label>
+
+<label class="option">
+<input type="radio" name="hpv_dose" value="2 เข็ม">
+2 เข็ม
+</label>
+
+<label class="option">
+<input type="radio" name="hpv_dose" value="3 เข็ม">
+3 เข็ม
+</label>
+
+</div>
+
+</div>
+
+
+<div class="question">
+
+<div class="q-title">
+3. อายุที่ท่านเริ่มรับวัคซีน
+</div>
+
+<div class="options">
+
+<label class="option">
+<input type="radio" name="hpv_age" value="ต่ำกว่า 15 ปี">
+ต่ำกว่า 15 ปี
+</label>
+
+<label class="option">
+<input type="radio" name="hpv_age" value="15-18 ปี">
+15-18 ปี
+</label>
+
+<label class="option">
+<input type="radio" name="hpv_age" value="19-26 ปี">
+19-26 ปี
+</label>
+
+<label class="option">
+<input type="radio" name="hpv_age" value="มากกว่า 26 ปี">
+มากกว่า 26 ปี
+</label>
+
+</div>
+
+</div>
+
+
+<div class="question">
+
+<div class="q-title">
+4. สถานที่ในการรับวัคซีน
+</div>
+
+<div class="options">
+
+<label class="option">
+<input type="radio" name="hpv_location" value="โรงพยาบาลเอกชน">
+โรงพยาบาลเอกชน
+</label>
+
+<label class="option">
+<input type="radio" name="hpv_location" value="โรงพยาบาลรัฐบาล">
+โรงพยาบาลรัฐบาล
+</label>
+
+<label class="option">
+<input type="radio" name="hpv_location" value="คลินิก">
+คลินิก
+</label>
+
+<label class="option">
+<input type="radio" name="hpv_location" value="มหาวิทยาลัย">
+มหาวิทยาลัย
+</label>
+
+<label class="option">
+<input type="radio" name="hpv_location" value="อื่น ๆ">
+อื่น ๆ
+</label>
+
+</div>
+
+<input
+type="text"
+name="hpv_location_other"
+placeholder="หากเลือกอื่น ๆ โปรดระบุ"
+style="margin-top:12px">
+
+</div>
+
+
+<div class="question">
+
+<div class="q-title">
+5. ค่าใช้จ่ายในการรับวัคซีนป้องกันการติดเชื้อเอชพีวี
+</div>
+
+<div class="options">
+
+<label class="option">
+<input type="radio" name="hpv_cost" value="ฟรี">
+ฟรี
+</label>
+
+<label class="option">
+<input type="radio" name="hpv_cost" value="ชำระเอง">
+ชำระเอง
+</label>
+
+<label class="option">
+<input type="radio" name="hpv_cost" value="สวัสดิการ">
+สวัสดิการ
+</label>
+
+<label class="option">
+<input type="radio" name="hpv_cost" value="อื่น ๆ">
+อื่น ๆ
+</label>
+
+</div>
+
+<input
+type="text"
+name="hpv_cost_other"
+placeholder="หากเลือกอื่น ๆ โปรดระบุ"
+style="margin-top:12px">
+
+</div>
+
+</div>
+
+
+<div
+id="notVaccinatedBox"
+class="hidden"
+style="margin-top:20px">
+
+<div class="q-title">
+
+6. หากท่านไม่เคยรับวัคซีน สาเหตุหลักคือ
+
+<br>
+
+<span style="font-size:13px;color:#687386">
+(เลือกตอบได้มากกว่า 1 ข้อ)
+</span>
+
+</div>
+
+<div
+class="options"
+style="margin-top:12px">
+
+<label class="option">
+<input type="checkbox" name="reasons" value="ไม่ทราบข้อมูล">
+ไม่ทราบข้อมูล
+</label>
+
+<label class="option">
+<input type="checkbox" name="reasons" value="ราคาสูง">
+ราคาสูง
+</label>
+
+<label class="option">
+<input type="checkbox" name="reasons" value="กลัวผลข้างเคียง">
+กลัวผลข้างเคียง
+</label>
+
+<label class="option">
+<input type="checkbox" name="reasons" value="ไม่มีเวลา">
+ไม่มีเวลา
+</label>
+
+<label class="option">
+<input type="checkbox" name="reasons" value="คิดว่าไม่จำเป็น">
+คิดว่าไม่จำเป็น
+</label>
+
+<label class="option">
+<input type="checkbox" name="reasons" value="อื่น ๆ">
+อื่น ๆ
+</label>
+
+</div>
+
+<input
+type="text"
+name="reasons_other"
+placeholder="หากเลือกอื่น ๆ โปรดระบุ"
+style="margin-top:12px">
+
+</div>
+
+</section>
+
+
+<div class="actions">
+
+<button
+type="reset"
+class="btn secondary">
+
+ล้างข้อมูล
+
+</button>
+
+<button
+type="submit"
+class="btn primary">
+
+ส่งแบบสอบถาม
+
+</button>
+
+</div>
+
+</form>
+
+</div>
+
+
+<!-- DASHBOARD -->
+
+<div
+id="dashboardPage"
+class="hidden">
+
+<section class="hero">
+
+<span class="badge">
+Admin Dashboard
+</span>
+
+<h1>
+ข้อมูลผู้ตอบแบบสอบถาม
+</h1>
+
+<p>
+ดูข้อมูลที่บันทึกไว้
+</p>
+
+</section>
+
+
+<div
+class="stats"
+id="stats"
+style="margin-top:20px">
+</div>
+
+
+<section class="card">
+
+<div
+style="
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:15px;
+flex-wrap:wrap;
+">
+
+<h2>
+รายการข้อมูล
+</h2>
+
+<button
+class="btn secondary"
+onclick="loadDashboard()">
+
+รีเฟรช
+
+</button>
+
+</div>
+
+
+<div
+class="table-wrap"
+id="tableBox">
+
+<div class="empty">
+กำลังโหลดข้อมูล...
+</div>
+
+</div>
+
+</section>
+
+</div>
+
+</div>
+
+</div>
+
+
+<script>
+
+// =================================================
+// CONFIG
+// =================================================
+
+const CONFIG = {
+
+API_URL:
+"https://script.google.com/macros/s/AKfycbyZ8dEztnfZa7kzEBWEmSizcuCZjIexsAqjc0c8Nw7-1qCtRB1yiC6c--hWVMLSRp74/exec"
+
+};
+
+
+// =================================================
+// ADMIN TOKEN
+// =================================================
+
+let token =
+sessionStorage.getItem(
+"survey_admin_token"
+) || "";
+
+
+// =================================================
+// QUESTIONS
+// =================================================
+
+const healthQs = [
+
+["access_1","ท่านสามารถค้นหาข้อมูลเกี่ยวกับเชื้อเอชพีวีและวัคซีนได้ด้วยตนเอง"],
+
+["access_2","ท่านสามารถตรวจสอบความน่าเชื่อถือของข้อมูลเกี่ยวกับเอชพีวีได้"],
+
+["access_3","ท่านทราบช่องทางในการสอบถามข้อมูลเพิ่มเติมเกี่ยวกับวัคซีน"],
+
+["access_4","ท่านสามารถค้นหาสถานบริการฉีดวัคซีนได้"],
+
+["understand_5","ท่านสามารถเข้าใจข้อมูลเกี่ยวกับการป้องกันการติดเชื้อเอชพีวี"],
+
+["understand_6","ท่านเข้าใจข้อมูลเกี่ยวกับจำนวนเข็มของวัคซีน"],
+
+["understand_7","ท่านเข้าใจผลข้างเคียงหลังได้รับวัคซีน"],
+
+["understand_8","ท่านเข้าใจประโยชน์ของวัคซีนป้องกันเอชพีวี"],
+
+["decision_9","ท่านสามารถตัดสินใจเกี่ยวกับการป้องกันการติดเชื้อเอชพีวี"],
+
+["decision_10","ท่านสามารถเลือกวิธีการป้องกันเอชพีวีที่เหมาะสม"],
+
+["decision_11","ท่านสามารถเปรียบเทียบข้อดีและข้อเสียของวิธีการป้องกัน"],
+
+["decision_12","ท่านสามารถอธิบายเหตุผลในการเลือกวิธีป้องกันได้"],
+
+["apply_13","ท่านสามารถนำความรู้ไปใช้ในการดูแลสุขภาพ"],
+
+["apply_14","ท่านสามารถนำความรู้เกี่ยวกับเอชพีวีไปใช้ได้"],
+
+["apply_15","ท่านสามารถลดพฤติกรรมเสี่ยงต่อการติดเชื้อ"],
+
+["apply_16","ท่านสามารถปรับพฤติกรรมเพื่อป้องกันโรคได้"]
+
+];
+
+
+// =================================================
+// KNOWLEDGE QUESTIONS
+// คำตอบที่ถูกต้องใช้สำหรับคำนวณคะแนน
+// =================================================
+
+const knowledgeQs = [
+
+{
+question:"เชื้อเอชพีวีพบได้เฉพาะในเพศหญิงเท่านั้น",
+answer:"ผิด"
+},
+
+{
+question:"เชื้อเอชพีวีเป็นสาเหตุสำคัญของมะเร็งปากมดลูก",
+answer:"ถูก"
+},
+
+{
+question:"การติดเชื้อเอชพีวีไม่สามารถป้องกันได้",
+answer:"ผิด"
+},
+
+{
+question:"การมีคู่นอนหลายคนเพิ่มความเสี่ยงต่อการติดเชื้อเอชพีวี",
+answer:"ถูก"
+},
+
+{
+question:"ผู้ติดเชื้อเอชพีวีจะแสดงอาการทันที",
+answer:"ผิด"
+},
+
+{
+question:"วัคซีนเอชพีวีมีประสิทธิภาพสูงเมื่อฉีดก่อนมีเพศสัมพันธ์",
+answer:"ถูก"
+},
+
+{
+question:"ผู้ฉีดวัคซีนครบไม่จำเป็นต้องตรวจคัดกรองมะเร็งปากมดลูก",
+answer:"ผิด"
+},
+
+{
+question:"วัคซีนเอชพีวีฉีดได้ทั้งเพศหญิงและเพศชาย",
+answer:"ถูก"
+},
+
+{
+question:"เอชพีวีสามารถแพร่จากการกินอาหารร่วมกันได้ง่าย",
+answer:"ผิด"
+},
+
+{
+question:"แม้ฉีดวัคซีนแล้วก็ยังอาจเสี่ยงต่อสายพันธุ์ที่วัคซีนไม่ครอบคลุม",
+answer:"ถูก"
+}
+
+];
+
+
+// =================================================
+// RENDER QUESTIONS
+// =================================================
+
+function renderQuestions(){
+
+document.getElementById(
+"healthQuestions"
+).innerHTML =
+
+healthQs.map((q,i)=>`
+
+<div class="question">
+
+<div class="q-title">
+${i+1}. ${q[1]}
+</div>
+
+<div class="likert">
+
+${[1,2,3,4,5].map(v=>`
+
+<label>
+
+<input
+type="radio"
+required
+name="${q[0]}"
+value="${v}">
+
+${v}
+
+</label>
+
+`).join("")}
+
+</div>
+
+</div>
+
+`).join("");
+
+
+
+document.getElementById(
+"knowledgeQuestions"
+).innerHTML =
+
+knowledgeQs.map((item,i)=>`
+
+<div class="question">
+
+<div class="q-title">
+${i+1}. ${item.question}
+</div>
+
+<div class="tf">
+
+<label>
+
+<input
+type="radio"
+required
+name="knowledge_${i+1}"
+value="ถูก">
+
+ถูก
+
+</label>
+
+<label>
+
+<input
+type="radio"
+required
+name="knowledge_${i+1}"
+value="ผิด">
+
+ผิด
+
+</label>
+
+</div>
+
+</div>
+
+`).join("");
+
+}
+
+
+// =================================================
+// CALCULATE HEALTH LITERACY SCORE
+//
+// สูตร:
+// Index = (Mean - 1) × 50 / 4
+//
+// คะแนน 0-25   = ไม่เพียงพอ
+// คะแนน 26-33  = เป็นปัญหา
+// คะแนน 34-42  = เพียงพอ
+// คะแนน 43-50  = เป็นเลิศ
+// =================================================
+
+function calculateHealthScore(data){
+
+let scores = [];
+
+healthQs.forEach(q=>{
+
+const value =
+Number(data[q[0]]);
+
+if(!isNaN(value)){
+
+scores.push(value);
+
+}
+
+});
+
+
+if(!scores.length){
+
+return {
+health_raw_score:0,
+health_mean:0,
+health_index:0,
+health_level:""
+};
+
+}
+
+
+const total =
+scores.reduce(
+(a,b)=>a+b,
+0
+);
+
+
+const mean =
+total / scores.length;
+
+
+const index =
+((mean - 1) * 50) / 4;
+
+
+const roundedIndex =
+Math.round(index * 100) / 100;
+
+
+let level = "";
+
+
+if(roundedIndex <= 25){
+
+level =
+"ความรอบรู้ด้านสุขภาพไม่เพียงพอ";
+
+}
+
+else if(roundedIndex <= 33){
+
+level =
+"ความรอบรู้ด้านสุขภาพเป็นปัญหา";
+
+}
+
+else if(roundedIndex <= 42){
+
+level =
+"ความรอบรู้ด้านสุขภาพเพียงพอ";
+
+}
+
+else{
+
+level =
+"ความรอบรู้ด้านสุขภาพเป็นเลิศ";
+
+}
+
+
+return {
+
+health_raw_score:
+total,
+
+health_mean:
+Math.round(mean * 100) / 100,
+
+health_index:
+roundedIndex,
+
+health_level:
+level
+
+};
+
+}
+
+
+// =================================================
+// CALCULATE KNOWLEDGE SCORE
+//
+// ถูก = 1 คะแนน
+// ผิด = 0 คะแนน
+//
+// <60%     = ระดับน้อย
+// 60-79%   = ระดับปานกลาง
+// >=80%    = ระดับสูง
+// =================================================
+
+function calculateKnowledgeScore(data){
+
+let score = 0;
+
+
+knowledgeQs.forEach((item,index)=>{
+
+const userAnswer =
+data[`knowledge_${index+1}`];
+
+
+if(userAnswer === item.answer){
+
+score++;
+
+}
+
+});
+
+
+const total =
+knowledgeQs.length;
+
+
+const percent =
+(score / total) * 100;
+
+
+let level = "";
+
+
+if(percent < 60){
+
+level =
+"มีความรู้ระดับน้อย";
+
+}
+
+else if(percent < 80){
+
+level =
+"มีความรู้ระดับปานกลาง";
+
+}
+
+else{
+
+level =
+"มีความรู้ระดับสูง";
+
+}
+
+
+return {
+
+knowledge_score:
+score,
+
+knowledge_total:
+total,
+
+knowledge_percent:
+Math.round(percent * 100) / 100,
+
+knowledge_level:
+level
+
+};
+
+}
+
+
+// =================================================
+// VACCINE TOGGLE
+// =================================================
+
+function toggleVaccine(){
+
+const value =
+document.querySelector(
+'input[name="hpv_status"]:checked'
+)?.value;
+
+
+document.getElementById(
+"vaccinatedBox"
+).classList.toggle(
+"hidden",
+value !== "เคย"
+);
+
+
+document.getElementById(
+"notVaccinatedBox"
+).classList.toggle(
+"hidden",
+value !== "ไม่เคย"
+);
+
+}
+
+
+// =================================================
+// API
+// =================================================
+
+function api(action,data={}){
+
+const payload = {
+action,
+...data
+};
+
+
+if(
+action === "getData" &&
+token
+){
+
+payload.token = token;
+
+}
+
+
+return fetch(
+CONFIG.API_URL,
+{
+method:"POST",
+
+headers:{
+"Content-Type":
+"text/plain;charset=utf-8"
+},
+
+body:
+JSON.stringify(payload)
+
+}
+)
+.then(r=>r.json());
+
+}
+
+
+// =================================================
+// PROGRESS
+// =================================================
+
+function updateProgress(){
+
+const required =
+[
+...document.querySelectorAll(
+'#surveyForm input[required]'
+)
+];
+
+
+const groups = {};
+
+required.forEach(input=>{
+
+if(input.type === "radio"){
+
+groups[input.name] =
+true;
+
+}
+
+else{
+
+groups[
+input.name
+] = true;
+
+}
+
+});
+
+
+const uniqueNames =
+Object.keys(groups);
+
+
+let completed = 0;
+
+
+uniqueNames.forEach(name=>{
+
+const inputs =
+document.querySelectorAll(
+`#surveyForm [name="${name}"]`
+);
+
+
+const first =
+inputs[0];
+
+
+if(first.type === "radio"){
+
+if(
+document.querySelector(
+`#surveyForm input[name="${name}"]:checked`
+)
+){
+
+completed++;
+
+}
+
+}
+
+else{
+
+if(first.value.trim()){
+
+completed++;
+
+}
+
+}
+
+});
+
+
+const total =
+uniqueNames.length;
+
+
+const pct =
+total
+?
+Math.round(
+(completed / total) * 100
+)
+:
+0;
+
+
+document.getElementById(
+"progressBar"
+).style.width =
+pct + "%";
+
+
+document.getElementById(
+"progressText"
+).textContent =
+`ความคืบหน้า ${pct}%`;
+
+}
+
+
+document.addEventListener(
+"input",
+updateProgress
+);
+
+document.addEventListener(
+"change",
+updateProgress
+);
+
+
+// =================================================
+// SUBMIT
+// =================================================
+
+document.getElementById(
+"surveyForm"
+).addEventListener(
+"submit",
+async e=>{
+
+e.preventDefault();
+
+
+if(!e.target.reportValidity()){
+
+return;
+
+}
+
+
+const fd =
+new FormData(e.target);
+
+
+const data = {};
+
+
+fd.forEach((value,key)=>{
+
+if(key === "reasons"){
+
+if(!data[key]){
+
+data[key] = [];
+
+}
+
+data[key].push(value);
+
+}
+
+else{
+
+data[key] = value;
+
+}
+
+});
+
+
+// =============================================
+// คำนวณคะแนนส่วนที่ 2
+// =============================================
+
+const healthResult =
+calculateHealthScore(data);
+
+
+// =============================================
+// คำนวณคะแนนส่วนที่ 3
+// =============================================
+
+const knowledgeResult =
+calculateKnowledgeScore(data);
+
+
+// รวมผลคะแนนลงในข้อมูลที่จะส่งไป Google Sheet
+
+Object.assign(
+data,
+healthResult,
+knowledgeResult
+);
+
+
+try{
+
+const result =
+await api(
+"submit",
+{data}
+);
+
+
+if(!result.success){
+
+throw new Error(
+result.message ||
+"บันทึกข้อมูลไม่สำเร็จ"
+);
+
+}
+
+
+toast(
+"✓ บันทึกข้อมูลเรียบร้อยแล้ว"
+);
+
+
+e.target.reset();
+
+
+toggleVaccine();
+
+
+updateProgress();
+
+}
+catch(error){
+
+toast(
+"เกิดข้อผิดพลาด: " +
+error.message
+);
+
+}
+
+}
+);
+
+
+// =================================================
+// ADMIN LOGIN
+// =================================================
+
+document.getElementById(
+"loginForm"
+).addEventListener(
+"submit",
+async e=>{
+
+e.preventDefault();
+
+
+try{
+
+const result =
+await api(
+"login",
+{
+username:
+document.getElementById("username").value,
+
+password:
+document.getElementById("password").value
+}
+);
+
+
+if(!result.success){
+
+throw new Error(
+result.message ||
+"เข้าสู่ระบบไม่สำเร็จ"
+);
+
+}
+
+
+token =
+result.token;
+
+
+sessionStorage.setItem(
+"survey_admin_token",
+token
+);
+
+
+openApp(
+"dashboard"
+);
+
+}
+catch(error){
+
+document.getElementById(
+"loginError"
+).textContent =
+error.message;
+
+}
+
+}
+);
+
+
+// =================================================
+// PAGE
+// =================================================
+
+function handleAuthButton(){
+
+if(token){
+
+logout();
+
+}
+
+else{
+
+showLogin();
+
+}
+
+}
+
+
+function showLogin(){
+
+document.getElementById(
+"appView"
+).classList.add("hidden");
+
+
+document.getElementById(
+"loginView"
+).classList.remove("hidden");
+
+}
+
+
+function openApp(page="survey"){
+
+document.getElementById(
+"loginView"
+).classList.add("hidden");
+
+
+document.getElementById(
+"appView"
+).classList.remove("hidden");
+
+
+updateAuthUI();
+
+
+showPage(page);
+
+}
+
+
+function updateAuthUI(){
+
+document.getElementById(
+"authButton"
+).textContent =
+token
+?
+"ออกจากระบบผู้วิจัย"
+:
+"เข้าสู่ระบบผู้วิจัย";
+
+}
+
+
+function logout(){
+
+token = "";
+
+sessionStorage.removeItem(
+"survey_admin_token"
+);
+
+openApp(
+"survey"
+);
+
+}
+
+
+function showPage(page){
+
+const dashboard =
+page === "dashboard";
+
+
+if(
+dashboard &&
+!token
+){
+
+showLogin();
+
+return;
+
+}
+
+
+document.getElementById(
+"surveyPage"
+).classList.toggle(
+"hidden",
+dashboard
+);
+
+
+document.getElementById(
+"dashboardPage"
+).classList.toggle(
+"hidden",
+!dashboard
+);
+
+
+document.getElementById(
+"tabSurvey"
+).classList.toggle(
+"active",
+!dashboard
+);
+
+
+document.getElementById(
+"tabDashboard"
+).classList.toggle(
+"active",
+dashboard
+);
+
+
+if(dashboard){
+
+loadDashboard();
+
+}
+
+}
+
+
+// =================================================
+// DASHBOARD
+// =================================================
+
+async function loadDashboard(){
+
+const box =
+document.getElementById(
+"tableBox"
+);
+
+
+box.innerHTML =
+'<div class="empty">กำลังโหลดข้อมูล...</div>';
+
+
+try{
+
+const result =
+await api(
+"getData"
+);
+
+
+if(!result.success){
+
+throw new Error(
+result.message ||
+"โหลดข้อมูลไม่สำเร็จ"
+);
+
+}
+
+
+const rows =
+result.rows || [];
+
+
+const summary =
+result.summary || {};
+
+
+document.getElementById(
+"stats"
+).innerHTML =
+
+[
+["ผู้ตอบทั้งหมด",summary.total || 0],
+["เคยฉีดวัคซีน",summary.vaccinated || 0],
+["ไม่เคยฉีดวัคซีน",summary.notVaccinated || 0],
+["อายุเฉลี่ย",summary.avgAge || "-"]
+]
+
+.map(x=>`
+
+<div class="stat">
+
+<b>${x[1]}</b>
+
+<span>${x[0]}</span>
+
+</div>
+
+`).join("");
+
+
+if(!rows.length){
+
+box.innerHTML =
+'<div class="empty">ยังไม่มีข้อมูล</div>';
+
+return;
+
+}
+
+
+// คอลัมน์ที่แสดงบน Dashboard
+
+const columns = [
+
+"timestamp",
+"age",
+"level",
+"faculty",
+"gpax",
+"income",
+"hpv_status",
+
+"health_raw_score",
+"health_mean",
+"health_index",
+"health_level",
+
+"knowledge_score",
+"knowledge_percent",
+"knowledge_level"
+
+];
+
+
+const columnNames = {
+
+timestamp:"วันและเวลา",
+age:"อายุ",
+level:"ชั้นปี",
+faculty:"คณะ",
+gpax:"GPAX",
+income:"รายได้",
+hpv_status:"สถานะการฉีดวัคซีน",
+
+health_raw_score:"คะแนนความรอบรู้รวม",
+health_mean:"ค่าเฉลี่ยความรอบรู้",
+health_index:"คะแนนดัชนี 0-50",
+health_level:"ระดับความรอบรู้",
+
+knowledge_score:"คะแนนความรู้",
+knowledge_percent:"ความรู้ (%)",
+knowledge_level:"ระดับความรู้"
+
+};
+
+
+box.innerHTML = `
+
+<table>
+
+<thead>
+
+<tr>
+
+${columns.map(
+c=>`<th>${columnNames[c] || c}</th>`
+).join("")}
+
+</tr>
+
+</thead>
+
+<tbody>
+
+${rows.map(
+row=>`
+
+<tr>
+
+${columns.map(
+c=>`<td>${row[c] ?? ""}</td>`
+).join("")}
+
+</tr>
+
+`
+).join("")}
+
+</tbody>
+
+</table>
+
+`;
+
+}
+catch(error){
+
+console.error(error);
+
+box.innerHTML =
+'<div class="empty">โหลดข้อมูลไม่สำเร็จ: กรุณาตรวจสอบการเชื่อมต่อกับ Google Apps Script</div>';
+
+}
+
+}
+
+
+// =================================================
+// TOAST
+// =================================================
+
+function toast(message){
+
+const t =
+document.getElementById(
+"toast"
+);
+
+
+t.textContent =
+message;
+
+
+t.style.display =
+"block";
+
+
+setTimeout(
+()=>{
+
+t.style.display =
+"none";
+
+},
+3000
+);
+
+}
+
+
+// =================================================
+// START
+// =================================================
+
+renderQuestions();
+
+updateProgress();
+
+openApp("survey");
+
+</script>
+
+</body>
+</html>
