@@ -4939,9 +4939,7 @@ function toggleVaccine(){
 function showResearchDocument(){
 
   if(surveyTerminated){
-
     return;
-
   }
 
 
@@ -4950,24 +4948,74 @@ function showResearchDocument(){
   researchConsentGiven = false;
 
 
+  /*
+    รีเซ็ต Consent
+  */
+
+  const consentInputs =
+    document.querySelectorAll(
+      'input[name="research_consent"]'
+    );
+
+  consentInputs.forEach(input => {
+
+    input.checked = false;
+
+  });
+
+
+  /*
+    แสดงเอกสาร
+  */
+
   document.getElementById(
     "researchDocumentView"
   ).classList.remove("hidden");
 
+
+  /*
+    ซ่อน Progress
+  */
 
   document.getElementById(
     "surveyProgressWrap"
   ).classList.add("hidden");
 
 
+  /*
+    ซ่อน Form ทั้งหมด
+  */
+
   document.getElementById(
     "surveyForm"
   ).classList.add("hidden");
 
 
+  /*
+    ซ่อน Consent และ Questionnaire
+  */
+
+  document.getElementById(
+    "consentSection"
+  ).classList.remove("hidden");
+
+
   document.getElementById(
     "questionnaireSections"
   ).classList.add("hidden");
+
+
+  /*
+    ซ่อนข้อมูลส่วนบุคคล
+  */
+
+  document.querySelectorAll(
+    "#surveyForm > section.card"
+  ).forEach(section => {
+
+    section.classList.add("hidden");
+
+  });
 
 
   const frame =
