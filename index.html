@@ -5008,45 +5008,57 @@ function showResearchDocument(){
 function continueFromResearchDocument(){
 
   if(surveyTerminated){
-
     return;
-
   }
-
 
   if(
     !PDF_URL ||
-    PDF_URL.includes(
-      "ใส่ URL ของไฟล์ PDF"
-    )
+    PDF_URL.includes("ใส่ URL ของไฟล์ PDF")
   ){
-
     toast(
       "กรุณากำหนด URL ของไฟล์ PDF ก่อนดำเนินการต่อ"
     );
-
     return;
-
   }
-
 
   researchDocumentCompleted = true;
 
-
+  // ซ่อนเอกสาร
   document.getElementById(
     "researchDocumentView"
   ).classList.add("hidden");
 
-
+  // แสดง Progress
   document.getElementById(
     "surveyProgressWrap"
   ).classList.remove("hidden");
 
+  /*
+    สำคัญ:
+    แสดงเฉพาะส่วน Consent
+    แต่ยังไม่แสดงแบบสอบถาม
+  */
 
   document.getElementById(
     "surveyForm"
   ).classList.remove("hidden");
 
+  document.getElementById(
+    "consentSection"
+  ).classList.remove("hidden");
+
+  /*
+    ซ่อนข้อมูลส่วนบุคคลและแบบสอบถามทั้งหมด
+    จนกว่าจะกดยินยอม
+  */
+
+  document.querySelectorAll(
+    "#surveyForm > section.card"
+  ).forEach(section => {
+
+    section.classList.add("hidden");
+
+  });
 
   document.getElementById(
     "questionnaireSections"
@@ -5076,9 +5088,7 @@ function continueFromResearchDocument(){
 function processConsent(){
 
   if(surveyTerminated){
-
     return;
-
   }
 
 
@@ -5110,15 +5120,19 @@ function processConsent(){
   errorBox.textContent = "";
 
 
+  // ยังไม่ได้เลือก Consent
+
   if(!selected){
 
     errorBox.textContent =
-      "กรุณาเลือกการยินยอมก่อนดำเนินการต่อ";
+      "กรุณาเลือกการยินยอมเข้าร่วมการวิจัยก่อนดำเนินการต่อ";
 
     return;
 
   }
 
+
+  // ไม่ยินยอม
 
   if(selected.value === "ไม่ยินยอม"){
 
@@ -5129,10 +5143,39 @@ function processConsent(){
   }
 
 
+  // ยินยอม
+
   if(selected.value === "ยินยอม"){
 
     researchConsentGiven = true;
 
+
+    /*
+      ซ่อนส่วน Consent
+      เพื่อป้องกันการย้อนกลับมาแก้ไข
+    */
+
+    document.getElementById(
+      "consentSection"
+    ).classList.add("hidden");
+
+
+    /*
+      แสดงข้อมูลส่วนบุคคล
+    */
+
+    document.querySelectorAll(
+      "#surveyForm > section.card"
+    ).forEach(section => {
+
+      section.classList.remove("hidden");
+
+    });
+
+
+    /*
+      แสดงแบบสอบถามส่วนที่เหลือทั้งหมด
+    */
 
     document.getElementById(
       "questionnaireSections"
@@ -5142,8 +5185,12 @@ function processConsent(){
     updateProgress();
 
 
-    document.getElementById(
-      "questionnaireSections"
+    /*
+      เลื่อนไปเริ่มแบบสอบถาม
+    */
+
+    document.querySelector(
+      "#surveyForm > section.card"
     ).scrollIntoView({
 
       behavior:"smooth",
@@ -5151,6 +5198,7 @@ function processConsent(){
       block:"start"
 
     });
+
 
   }
 
