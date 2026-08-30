@@ -3417,7 +3417,91 @@ content="ระบบแบบสอบถามการวิจัยเก�
 
   </div>
 
+<!-- =================================================
+         CONSENT
+    ================================================= -->
 
+    <section
+      id="consentSection"
+      class="consent-card">
+
+      <div class="consent-title">
+
+        <div class="consent-title-icon">
+          ✓
+        </div>
+
+        <div>
+
+          <h2>
+            การยินยอมเข้าร่วมการวิจัย
+          </h2>
+
+          <p>
+            กรุณาเลือกเพียง 1 ตัวเลือกก่อนเข้าสู่แบบสอบถาม
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="consent-options">
+
+        <label class="consent-option">
+
+          <input
+            type="radio"
+            name="research_consent"
+            value="ยินยอม"
+            required
+          >
+
+          <span>
+            ข้าพเจ้าได้อ่านรายละเอียดข้างต้นแล้ว ขอยืนยันว่ามีอายุ 18 ปีบริบูรณ์ขึ้นไป และยินยอมเข้าร่วมการตอบแบบสอบถามด้วยความสมัครใจ
+          </span>
+
+        </label>
+
+
+        <label class="consent-option">
+
+          <input
+            type="radio"
+            name="research_consent"
+            value="ไม่ยินยอม"
+            required
+          >
+
+          <span>
+            ข้าพเจ้ามีอายุต่ำกว่า 18 ปีบริบูรณ์ หรือ ไม่ประสงค์เข้าร่วมการตอบแบบสอบถาม
+          </span>
+
+        </label>
+
+      </div>
+
+
+      <div
+        id="consentError"
+        class="error">
+      </div>
+
+
+      <div class="consent-actions">
+
+        <button
+          type="button"
+          class="btn primary"
+          onclick="processConsent()">
+
+          ✓ ดำเนินการต่อ
+
+        </button>
+
+      </div>
+
+    </section>
 
   <!-- FORM -->
 
@@ -3585,96 +3669,6 @@ content="ระบบแบบสอบถามการวิจัยเก�
       </div>
 
     </section>
-
-
-
-    <!-- =================================================
-         CONSENT
-    ================================================= -->
-
-    <section
-      id="consentSection"
-      class="consent-card">
-
-      <div class="consent-title">
-
-        <div class="consent-title-icon">
-          ✓
-        </div>
-
-        <div>
-
-          <h2>
-            การยินยอมเข้าร่วมการวิจัย
-          </h2>
-
-          <p>
-            กรุณาเลือกเพียง 1 ตัวเลือกก่อนเข้าสู่แบบสอบถาม
-          </p>
-
-        </div>
-
-      </div>
-
-
-      <div class="consent-options">
-
-        <label class="consent-option">
-
-          <input
-            type="radio"
-            name="research_consent"
-            value="ยินยอม"
-            required
-          >
-
-          <span>
-            ข้าพเจ้าได้อ่านรายละเอียดข้างต้นแล้ว ขอยืนยันว่ามีอายุ 18 ปีบริบูรณ์ขึ้นไป และยินยอมเข้าร่วมการตอบแบบสอบถามด้วยความสมัครใจ
-          </span>
-
-        </label>
-
-
-        <label class="consent-option">
-
-          <input
-            type="radio"
-            name="research_consent"
-            value="ไม่ยินยอม"
-            required
-          >
-
-          <span>
-            ข้าพเจ้ามีอายุต่ำกว่า 18 ปีบริบูรณ์ หรือ ไม่ประสงค์เข้าร่วมการตอบแบบสอบถาม
-          </span>
-
-        </label>
-
-      </div>
-
-
-      <div
-        id="consentError"
-        class="error">
-      </div>
-
-
-      <div class="consent-actions">
-
-        <button
-          type="button"
-          class="btn primary"
-          onclick="processConsent()">
-
-          ✓ ดำเนินการต่อ
-
-        </button>
-
-      </div>
-
-    </section>
-
-
 
     <!-- =================================================
          REMAINING QUESTIONNAIRE
